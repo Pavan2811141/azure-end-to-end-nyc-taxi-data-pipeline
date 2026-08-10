@@ -65,28 +65,37 @@ The Gold data is stored using Delta tables to provide curated and analytical-rea
 
 ## Repository Structure
 
-```text
-azure-end-to-end-nyc-taxi-data-pipeline
+azure-end-to-end-nyc-taxi-data-pipeline/
 │
-├── adf
+├── adf/
 │   ├── ARMTemplateForFactory.json
 │   ├── ARMTemplateParametersForFactory.json
-│   ├── linkedTemplates
-│   ├── pipelines
-│   ├── datasets
-│   └── linkedServices
+│   ├── linkedTemplates/
+│   ├── pipelines/
+│   ├── datasets/
+│   └── linkedServices/
 │
-├── bronze
-│   ├── sample
+├── bronze/
+│   ├── sample/
+│   │   ├── green_tripdata_2023-01.parquet
+│   │   └── README.md
 │   └── README.md
 │
-├── databricks
-│   └── notebooks
-│       └── NYC_Taxi_Silver_Transformation.py
-│
-├── gold
-│   ├── README.md
-│   └── notebooks
+├── databricks/
+│   └── notebooks/
+│       ├── NYC_Taxi_Silver_Transformation.py
 │       └── NYC_Taxi_Gold_Delta.py
+│
+├── gold/
+│   └── README.md
+│
+├── screenshots/
+│   ├── 01-adf-pipeline.png
+│   ├── 02-adls-bronze.png
+│   ├── 03-bronze-trip-data.png
+│   ├── 04-databricks-silver.png
+│   ├── 05-adls-silver.png
+│   ├── 06-databricks-gold-delta.png
+│   └── 07-adls-gold.png
 │
 └── README.md
