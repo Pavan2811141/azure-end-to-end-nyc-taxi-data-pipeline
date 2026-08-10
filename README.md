@@ -12,25 +12,35 @@ The raw NYC Taxi data is ingested from an HTTP source into ADLS Gen2, transforme
 
 ## Architecture
 
-```text
-NYC Taxi Data
-      |
-      v
-Azure Data Factory
-      |
-      v
-ADLS Gen2 - Bronze Layer
-      |
-      v
-Azure Databricks + PySpark
-      |
-      v
-ADLS Gen2 - Silver Layer
-      |
-      v
-Gold Layer - Delta Tables
-```
+## Data Pipeline Flow
 
+The pipeline follows a **Medallion Architecture** consisting of Bronze, Silver, and Gold layers.
+
+| Layer        | Processing                                                                                                  | Output                         |
+| ------------ | ----------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| **Bronze**   | Raw data ingestion from HTTP source using Azure Data Factory                                                | Raw Parquet files in ADLS Gen2 |
+| **Silver**   | Data cleaning, filtering, null handling, duplicate removal, and data type transformations using Pyspark     | Cleaned Parquet files          |
+| **Gold**     | Business transformations, aggregations, and creation of analytical datasets using Databricks and Delta Lake | Delta tables                   |
+| **Power BI** | Connects to the curated Gold layer for data visualization and analysis                                      | Interactive dashboards         |
+
+---
+NYC Taxi Dataset
+       ↓
+Azure Data Factory
+       ↓
+ADLS Gen2 - Bronze Layer
+       ↓
+Azure Databricks / PySpark
+       ↓
+ADLS Gen2 - Silver Layer
+       ↓
+Databricks / Delta Lake
+       ↓
+ADLS Gen2 - Gold Layer
+       ↓
+Power BI
+       ↓
+Interactive Dashboard
 ---
 
 ## Technologies Used
