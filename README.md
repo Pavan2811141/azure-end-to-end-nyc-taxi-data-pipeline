@@ -195,7 +195,8 @@ azure-end-to-end-nyc-taxi-data-pipeline/
 │   └── README.md
 │
 ├── screenshots/
-│   ├── 01-adf-pipeline.png
+│   ├── 00-project-architecture.png
+    ├── 01-adf-pipeline.png
 │   ├── 02-adls-bronze.png
 │   ├── 03-bronze-trip-data.png
 │   ├── 04-databricks-silver.png
@@ -210,43 +211,49 @@ azure-end-to-end-nyc-taxi-data-pipeline/
 
 ## Project Screenshots
 
-### 1. Azure Data Factory Pipeline
+### 1. Project Architecture
+
+![NYC Taxi Data Engineering Pipeline Architecture](screenshots/00-project-architecture.png)
+
+The architecture diagram illustrates the end-to-end NYC Taxi data engineering pipeline, including data ingestion, storage, transformation, security, and reporting.
+
+### 2. Azure Data Factory Pipeline
 
 ![Azure Data Factory Pipeline](screenshots/01-adf-pipeline.png)
 
 Azure Data Factory is used to dynamically ingest NYC Taxi data from the HTTP source and load it into ADLS Gen2.
 
-### 2. ADLS Gen2 - Bronze Layer
+### 3. ADLS Gen2 - Bronze Layer
 
 ![ADLS Gen2 Bronze Layer](screenshots/02-adls-bronze.png)
 
 The Bronze layer stores the raw NYC Taxi data in ADLS Gen2.
 
-### 3. Bronze Sample Data
+### 4. Bronze Sample Data
 
 ![Bronze Sample Data](screenshots/03-bronze-trip-data.png)
 
 Representative NYC Taxi Parquet files stored in the Bronze layer.
 
-### 4. Databricks - Silver Transformation
+### 5. Databricks - Silver Transformation
 
 ![Databricks Silver Transformation](screenshots/04-databricks-silver.png)
 
 Azure Databricks and PySpark are used to read the Bronze data and perform data cleansing and transformation.
 
-### 5. ADLS Gen2 - Silver Layer
+### 6. ADLS Gen2 - Silver Layer
 
 ![ADLS Gen2 Silver Layer](screenshots/05-adls-silver.png)
 
 The transformed data is stored in the Silver layer of ADLS Gen2.
 
-### 6. Databricks - Gold Delta Table
+### 7. Databricks - Gold Delta Table
 
 ![Databricks Gold Delta Table](screenshots/06-databricks-gold-delta.png)
 
 The Gold layer is created using Delta Lake. The processed data is written as Delta Tables in Databricks.
 
-### 7. ADLS Gen2 - Gold Layer
+### 8. ADLS Gen2 - Gold Layer
 
 ![ADLS Gen2 Gold Layer](screenshots/07-adls-gold.png)
 
